@@ -20,8 +20,19 @@ from ProcessingData.load_models import load_all
 st.set_page_config(            
     page_title = "Delhivery ETA Predictor", 
     page_icon  = "🚚",                          
-    layout     = "wide"                
-)                                        
+    layout     = "wide",
+    initial_sidebar_state = "collapsed"    
+)      
+
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
                                                        
 # ── Load all models once (cached) ────────────────────────────
 @st.cache_resource
