@@ -1,44 +1,21 @@
-# 👨‍💻 Author
-
-## Ritam Mondal
-
-*  IIT Kharagpur
-*  ML & Data Analytics Enthusiast
-*  Optimization & Graph Intelligence Research
+# **Optimizing delhivery ETA**
+Graph-Based Network Intelligence for Delivery Time Prediction
+---
+### 👨‍💻 Author: Ritam Mondal    
+ B.Tech + M.Tech (Dual Degree), IIT Kharagpur '28  
+ ritamm134@gmail.com  
 
 ### 📬 Contact
 
 * Email: [ritamm134@gmail.com](mailto:ritamm134@gmail.com)
-* LinkedIn: https://www.linkedin.com/in/ritam-mondal-86a369287/
+* LinkedIn: <a href="https://www.linkedin.com/in/ritam-mondal-86a369287/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white&style=for-the-badge" width="70" height = "20"/></a>
 * GitHub: https://github.com/ritammondal2004
 
-````markdown
-<h1 align="center">🚚 Graph-Based Network Intelligence for Delivery Time Prediction</h1>
-
-<p align="center">
-  Intelligent ETA prediction system using Machine Learning, Graph Analytics, and Real-Time Route Intelligence
-</p>
-
-<br>
-
-<p align="center">
-  <a href="https://www.linkedin.com/in/ritam-mondal-86a369287/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&logoColor=white&style=for-the-badge"/>
-  </a>
-
-  <a href="mailto:ritamm134@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-red?logo=gmail&logoColor=white&style=for-the-badge"/>
-  </a>
-
-  <a href="https://github.com/ritammondal2004" target="_blank">
-    <img src="https://img.shields.io/badge/GitHub-black?logo=github&logoColor=white&style=for-the-badge"/>
-  </a>
-</p>
 
 ---
 
 
-````markdown
+
 
 #  Overview
 
@@ -61,8 +38,7 @@ The application is fully deployed using **Streamlit Cloud** and provides an inte
 # 🚀 Live Demo
 
 🔗 **Deployed Application:**  
-https://optimizingdeliveryetas-g6gq58lfhiwt4d83aj5zox.streamlit.app/
-
+     [App link](https://optimizingdeliveryetas-g6gq58lfhiwt4d83aj5zox.streamlit.app/)
 ---
 
 # ✨ Features
@@ -79,7 +55,9 @@ https://optimizingdeliveryetas-g6gq58lfhiwt4d83aj5zox.streamlit.app/
 
 ---
 
-# 🧠 Technologies Used
+
+
+## 🪜 Tech Stack
 
 | Technology | Purpose |
 |------------|----------|
@@ -93,6 +71,8 @@ https://optimizingdeliveryetas-g6gq58lfhiwt4d83aj5zox.streamlit.app/
 | NumPy | Numerical computations |
 
 ---
+
+
 
 # 📂 Project Structure
 
@@ -275,8 +255,3 @@ requests==2.32.4
 * API deployment using FastAPI
 
 ---
-
-
-
-
-
