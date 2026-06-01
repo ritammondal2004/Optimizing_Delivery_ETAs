@@ -18,10 +18,10 @@ from ProcessingData.load_models import load_all
                                                       
 # ── Page config ──────────────────────────────────────────────
 st.set_page_config(            
-    page_title = "Delhivery ETA Predictor", 
+    page_title = "Delhivery ETA Prediction System", 
     page_icon  = "🚚",                          
     layout     = "wide",
-    initial_sidebar_state = "collapsed"    
+    initial_sidebar_state = "expanded"    
 )      
 
 hide_streamlit_style = """
