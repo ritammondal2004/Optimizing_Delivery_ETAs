@@ -155,6 +155,48 @@ with col1:
     # result_data = None
     result_data = st.session_state.result_data
 
+    # ── Draw route from session_state (persists across reruns) ───
+    if result_data:
+        r          = st.session_state.result_data
+        src_coords = facility_coords.get(r['src_code'])
+        dst_coords = facility_coords.get(r['dst_code'])
+
+        if src_coords and dst_coords:
+            line_color = "#CD3434" if r['delay'] > 1.5 else '#1D9E75'
+
+            folium.Marker(
+                src_coords,
+                popup = r['src_name'],
+                icon  = folium.Icon(color='green', icon='play')
+            ).add_to(m)
+
+            folium.Marker(
+                dst_coords,
+                popup = r['dst_name'],
+                icon  = folium.Icon(color='red', icon='flag')
+            ).add_to(m)
+
+            folium.PolyLine(
+                [src_coords, dst_coords],
+                color   = line_color,
+                weight  = 4,
+                opacity = 0.8
+            ).add_to(m)
+
+            mid = [
+                (src_coords[0] + dst_coords[0]) / 2,
+                (src_coords[1] + dst_coords[1]) / 2
+            ]
+            folium.Marker(
+                mid,
+                icon = folium.DivIcon(
+                    html = f"<div style='background:{line_color};"
+                        f"color:white;padding:4px 8px;"
+                        f"border-radius:4px;font-weight:bold;"
+                        f"font-size:12px'>{r['eta']:.0f} mins</div>"
+                )
+            ).add_to(m)
+
     # ── Run prediction ───────────────────────────────────────
     if predict_btn and src_input and dst_input:
 
@@ -224,42 +266,8 @@ with col1:
                     'src_name' : src_name,
                     'dst_name' : dst_name,
                 }
-                result_data = st.session_state.result_data
 
-                # Draw route on map
-                line_color = "#CD3434" if result_data['delay'] > 1.5 else '#1D9E75'
-
-                folium.Marker(
-                    src_coords,
-                    popup = src_name,
-                    icon  = folium.Icon(color='green', icon='play')
-                ).add_to(m)
-
-                folium.Marker(
-                    dst_coords,
-                    popup = dst_name,
-                    icon  = folium.Icon(color='red', icon='flag')
-                ).add_to(m)
-
-                folium.PolyLine(
-                    [src_coords, dst_coords],
-                    color   = line_color,
-                    weight  = 4,
-                    opacity = 0.8
-                ).add_to(m)
-
-                mid = [(src_coords[0]+dst_coords[0])/2,
-                       (src_coords[1]+dst_coords[1])/2]
-
-                folium.Marker(
-                    mid,
-                    icon = folium.DivIcon(
-                        html = f"<div style='background:{line_color};"
-                               f"color:white;padding:4px 8px;"
-                               f"border-radius:4px;font-weight:bold;"
-                               f"font-size:12px'>{pred:.0f} mins</div>"
-                    )
-                ).add_to(m)
+                st.rerun()  # Refresh to show results immediately
 
     st_folium(m, width=900, height=550)
 
