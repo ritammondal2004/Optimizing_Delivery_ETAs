@@ -39,7 +39,10 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 def get_models():
     return load_all()  
 
-models = get_models()
+models = get_models() 
+# Initialize session state
+if 'result_data' not in st.session_state:
+    st.session_state.result_data = None 
 
 # ── Unpack ───────────────────────────────────────────────────
 betweenness         = models['betweenness']
@@ -149,7 +152,8 @@ with col1:
             tooltip      = f"{'⚠️ ' if is_top else ''}{place_name}"
         ).add_to(m)
 
-    result_data = None
+    # result_data = None
+    result_data = st.session_state.result_data
 
     # ── Run prediction ───────────────────────────────────────
     if predict_btn and src_input and dst_input:
@@ -210,7 +214,7 @@ with col1:
                                pd.DataFrame([row])[graph_features]
                            )[0]
 
-                result_data = {
+                st.session_state.result_data = {
                     'eta'      : pred,
                     'osrm'     : osrm_time,
                     'delay'    : pred / osrm_time,
@@ -220,6 +224,7 @@ with col1:
                     'src_name' : src_name,
                     'dst_name' : dst_name,
                 }
+                result_data = st.session_state.result_data
 
                 # Draw route on map
                 line_color = "#CD3434" if result_data['delay'] > 1.5 else '#1D9E75'
@@ -262,7 +267,8 @@ with col1:
 with col2:
     st.subheader("📊 Prediction Result")
 
-    if result_data:
+    if st.session_state.result_data:
+        result_data = st.session_state.result_data
         delay = result_data['delay']
         color = "🔴" if delay > 1.5 else "🟡" if delay > 1.2 else "🟢"
 
